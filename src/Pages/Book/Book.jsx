@@ -11,8 +11,8 @@ const Book = ({singleBook}) => {
   
   return (
   <Link to={`/bookDetails/${bookId}`}>
-   <div className="card bg-base-100 w-96  border p-6 shadow">
-  <figure className='p-4 bg-[#1313130d] w-2/3 mx-auto'>
+   <div className="card bg-base-100 w-96  border p-6 shadow h-full">
+  <figure className='p-4 bg-[#1313130d] w-2/3 mx-auto rounded-xl'>
     <img className=' h-[166px]'
       src={image}
       alt="Shoes" />
