@@ -10,6 +10,8 @@ const ReadList = () => {
 
   const [readList , setReadList] = useState([])
 
+  const [sort ,setSort] =useState("")
+
   const data = useLoaderData();
   console.log(data)
   
@@ -24,8 +26,37 @@ const ReadList = () => {
          setReadList(myReadList)
   }, [])
 
+  // sort by functionility
+  const handleSort = (type) =>{
+
+    setSort(type)
+    if(type === "pages"){
+      const sortedByPage = [...readList].sort((a,b)=> a.totalPages - b.totalPages)
+      setReadList(sortedByPage)
+
+      console.log(sortedByPage)
+    }
+
+    if(type === "ratings"){
+      const sortedByRating = [...readList].sort((a,b)=> a.rating - b.rating)
+      setReadList(sortedByRating)
+
+      console.log(sortedByRating)
+    }
+  }
+
   return (
     <div>
+      {/* dropdown */}
+     <div className=' flex justify-center'>
+       <details className="dropdown ">
+      <summary className="btn m-1 text-green-500">Sort By: {sort?sort:""}</summary>
+      <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm text-green-500">
+      <li><a onClick={()=>handleSort("pages")}>pages</a></li>
+      <li><a onClick={()=>handleSort("ratings")}>ratings</a></li>
+     </ul>
+     </details>
+     </div>
      <Tabs>
     <TabList>
       <Tab>Read Books</Tab>
